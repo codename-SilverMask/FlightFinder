@@ -5,6 +5,18 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   
+  // ESLint configuration for deployment
+  eslint: {
+    // Allow production builds to succeed even with ESLint warnings
+    ignoreDuringBuilds: false,
+  },
+  
+  // TypeScript configuration
+  typescript: {
+    // Allow production builds to succeed even with type errors (not recommended for production)
+    ignoreBuildErrors: false,
+  },
+  
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -16,9 +28,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
-  
-  // Static optimization
-  output: 'standalone',
   
   // Environment variables validation
   env: {
