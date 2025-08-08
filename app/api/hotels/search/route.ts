@@ -98,7 +98,9 @@ export async function GET(request: NextRequest) {
       // If we got hotels, try to get offers for the first few
       if (hotelListResponse.data?.data?.length > 0) {
         const hotels = hotelListResponse.data.data.slice(0, 10); // Get first 10 hotels
-        const hotelIds = hotels.map((hotel: { hotelId: string }) => hotel.hotelId).join(",");
+        const hotelIds = hotels
+          .map((hotel: { hotelId: string }) => hotel.hotelId)
+          .join(",");
 
         // Step 2: Get offers for these hotels
         const offersParams = new URLSearchParams();

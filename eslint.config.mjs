@@ -19,7 +19,8 @@ const eslintConfig = [
       "@typescript-eslint/prefer-as-const": "warn",
       "react-hooks/exhaustive-deps": "warn",
       // Allow any for API responses during development
-      "@typescript-eslint/no-explicit-any": process.env.NODE_ENV === "production" ? "error" : "warn",
+      "@typescript-eslint/no-explicit-any":
+        process.env.NODE_ENV === "production" ? "error" : "warn",
     },
   },
 ];
