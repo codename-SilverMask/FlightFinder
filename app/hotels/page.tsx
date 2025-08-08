@@ -1,31 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import { Building, Star, Shield, Clock } from "lucide-react";
+import LetterGlitch from "../components/LetterGlitch";
+import TextType from "../components/TextType";
+import GradientText from "../components/GradientText";
+import GlitchText from "../components/GlitchText";
+import HotelSearchForm from "../components/HotelSearchForm";
+import HotelResults from "../components/HotelResults";
+import MobileMenu from "../components/MobileMenu";
+import { searchHotels, HotelOffer } from "../services/hotels";
 import Link from "next/link";
-import { Plane, Star, Shield, Clock } from "lucide-react";
-import LetterGlitch from "./components/LetterGlitch";
-import TextType from "./components/TextType";
-import GradientText from "./components/GradientText";
-import GlitchText from "./components/GlitchText";
-import SearchForm from "./components/SearchForm";
-import FlightResults from "./components/FlightResults";
-import MobileMenu from "./components/MobileMenu";
-import { searchFlights, FlightOffer } from "./services/amadeus";
 
-export default function Home() {
-  const [flights, setFlights] = useState<FlightOffer[]>([]);
+export default function HotelsPage() {
+  const [hotels, setHotels] = useState<HotelOffer[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSearch = async (params: {
-    origin: string;
-    destination: string;
-    departureDate: string;
-    returnDate?: string;
-    passengers: number;
-    tripType: "one-way" | "round-trip";
+    cityCode: string;
+    checkInDate: string;
+    checkOutDate: string;
+    adults: number;
+    radius: number;
   }) => {
     setIsLoading(true);
     setError(null);
@@ -33,20 +32,21 @@ export default function Home() {
 
     try {
       const searchParams = {
-        originLocationCode: params.origin,
-        destinationLocationCode: params.destination,
-        departureDate: params.departureDate,
-        adults: params.passengers,
-        ...(params.returnDate && { returnDate: params.returnDate }),
+        cityCode: params.cityCode,
+        checkInDate: params.checkInDate,
+        checkOutDate: params.checkOutDate,
+        adults: params.adults,
+        radius: params.radius,
+        radiusUnit: "KM" as const,
       };
 
-      const results = await searchFlights(searchParams);
-      setFlights(results);
+      const results = await searchHotels(searchParams);
+      setHotels(results);
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "An unexpected error occurred"
       );
-      setFlights([]);
+      setHotels([]);
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +72,7 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center space-x-3">
                 <div className="bg-blue-600 p-2 rounded-lg">
-                  <Plane className="w-6 h-6 text-white" />
+                  <Building className="w-6 h-6 text-white" />
                 </div>
                 <GlitchText
                   speed={1}
@@ -86,23 +86,20 @@ export default function Home() {
 
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center space-x-6">
-                <Link
-                  href="/"
-                  className="hover:scale-105 transition-transform border-b-2 border-blue-500"
-                >
+                <Link href="/" className="hover:scale-105 transition-transform">
                   <GradientText
                     text="Flights"
-                    className="text-white"
+                    className="text-gray-300 hover:text-white transition-colors"
                     as="span"
                   />
                 </Link>
                 <Link
                   href="/hotels"
-                  className="hover:scale-105 transition-transform"
+                  className="hover:scale-105 transition-transform border-b-2 border-green-500"
                 >
                   <GradientText
                     text="Hotels"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-white"
                     as="span"
                   />
                 </Link>
@@ -133,9 +130,9 @@ export default function Home() {
             <div className="text-center mb-12">
               <TextType
                 text={[
-                  "Find Your Perfect Flight",
-                  "Search the world's airlines",
-                  "Book with confidence",
+                  "Find Perfect Hotels",
+                  "Discover amazing hotels worldwide",
+                  "Book your perfect stay",
                 ]}
                 typingSpeed={75}
                 pauseDuration={1500}
@@ -144,21 +141,20 @@ export default function Home() {
                 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6"
                 as="h2"
               />
-              <p className="text-white font-medium text-lg mb-8">
-                Discover the best flight deals with our advanced search engine.
-                <br />
-                Compare prices from hundreds of airlines and find your perfect
-                journey.
-              </p>{" "}
+              <p className="text-lg sm:text-xl text-white font-medium mb-8 max-w-2xl mx-auto">
+                Discover amazing hotels worldwide with the best prices and
+                amenities. Book your perfect stay with confidence.
+              </p>
+
               {/* Features */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 mb-12">
                 <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-yellow-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-yellow-400/10 group cursor-pointer">
                   <Star className="w-8 h-8 text-yellow-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                   <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-yellow-300 transition-colors">
-                    Best Prices
+                    Best Rates
                   </h3>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                    Compare prices from hundreds of airlines to find the best
+                  <p className="text-white font-medium group-hover:text-gray-200 transition-colors">
+                    Compare prices from top booking sites to find the best hotel
                     deals
                   </p>
                 </div>
@@ -167,17 +163,18 @@ export default function Home() {
                   <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-green-300 transition-colors">
                     Secure Booking
                   </h3>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                    Your personal information and payments are always protected
+                  <p className="text-white font-medium group-hover:text-gray-200 transition-colors">
+                    Your reservations and payments are always protected and
+                    secure
                   </p>
                 </div>
                 <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-blue-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-400/10 group cursor-pointer sm:col-span-2 lg:col-span-1">
                   <Clock className="w-8 h-8 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                   <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
-                    24/7 Support
+                    Instant Confirmation
                   </h3>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                    Get help anytime with our round-the-clock customer support
+                  <p className="text-white font-medium group-hover:text-gray-200 transition-colors">
+                    Get immediate booking confirmation and 24/7 customer support
                   </p>
                 </div>
               </div>
@@ -186,16 +183,12 @@ export default function Home() {
 
           {/* Search Form */}
           <div className="mb-8">
-            <SearchForm onSearch={handleSearch} isLoading={isLoading} />
+            <HotelSearchForm onSearch={handleSearch} isLoading={isLoading} />
           </div>
 
           {/* Results */}
           {hasSearched && (
-            <FlightResults
-              flights={flights}
-              isLoading={isLoading}
-              error={error}
-            />
+            <HotelResults hotels={hotels} isLoading={isLoading} error={error} />
           )}
         </main>
 
@@ -206,7 +199,7 @@ export default function Home() {
               <div>
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="bg-blue-600 p-2 rounded-lg">
-                    <Plane className="w-5 h-5 text-white" />
+                    <Building className="w-5 h-5 text-white" />
                   </div>
                   <GlitchText
                     speed={1}
@@ -218,7 +211,7 @@ export default function Home() {
                   </GlitchText>
                 </div>
                 <p className="text-gray-400 text-sm">
-                  Your trusted partner for finding the best flight deals
+                  Your trusted partner for finding the best travel deals
                   worldwide.
                 </p>
               </div>
