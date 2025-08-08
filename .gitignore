@@ -32,10 +32,19 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
 
+# production builds
+.next/
+out/
+build/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Bundle analyzer
+.next/analyze/

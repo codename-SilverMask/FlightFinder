@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build",
+    "build:production": "NODE_ENV=production next build",
+    "preview": "next build && next start",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "axios": "^1.11.0",
