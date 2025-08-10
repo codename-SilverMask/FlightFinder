@@ -2,6 +2,8 @@
 
 A modern, responsive flight search web application built with Next.js and powered by the Amadeus Flight Offers API. Features a sleek dark theme with animated background effects inspired by Reactbits.dev.
 
+Live Link: https://flight-finder-theta.vercel.app/
+
 ## 🚀 Features
 
 - **Flight Search**: Search for one-way and round-trip flights
