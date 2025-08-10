@@ -1,187 +1,42 @@
-# FlightFinder - Flight & Hotel Search Platform
+# FlightFinder - Technical Documentation
 
-A modern, responsive travel search application built with Next.js and powered by the Amadeus Travel API. Features a sleek dark theme with immersive animations and mobile-first design.
+A comprehensive technical guide to the FlightFinder application architecture, implementation details, and development processes.
 
-## 🚀 Features
+## 🏗️ Advanced Tech Stack
 
-- **Smart Flight Search**: One-way and round-trip flight discovery
-- **Hotel Booking**: Find hotels with detailed information and pricing
-- **Flight Tracking**: Real-time flight status and delay predictions
-- **Location Autocomplete**: Smart airport and city suggestions
-- **Mobile Responsive**: Optimized for all devices with touch-friendly interface
-- **Modern UI**: Dark theme with cyberpunk-inspired animations
-- **Real-time Data**: Live flight and hotel information from Amadeus API
+### Core Framework & Runtime
 
-## 🛠 Tech Stack
+- **Next.js 15.4.6**: Latest version with App Router and Turbopack
+- **React 19.1.0**: Latest React with concurrent features and optimizations
+- **TypeScript 5+**: Full type safety with strict mode configuration
+- **Node.js 18+**: Modern JavaScript runtime with ES2022 support
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS 4 with custom animations
-- **API**: Amadeus Travel API (Flight, Hotel, Location services)
-- **Animation**: GSAP for smooth transitions
-- **Icons**: Lucide React
-- **Date Management**: date-fns
-- **HTTP Client**: Axios
+### Styling & Animation System
 
-## 🚀 Getting Started
+- **Tailwind CSS 4**: Latest utility-first CSS framework with custom animations
+- **GSAP 3.13.0**: Professional-grade animation library for smooth transitions
+- **Custom CSS Modules**: Component-specific styling for complex animations
+- **Responsive Design**: Mobile-first approach with breakpoint optimization
 
-### Prerequisites
+### API & Data Management
 
-- Node.js 18+
-- npm or yarn
+- **Amadeus Travel API**: Official airline and hotel data provider
+- **Axios 1.11.0**: Promise-based HTTP client with interceptors
+- **Date-fns 4.1.0**: Modern date manipulation and formatting library
+- **RESTful Architecture**: Clean API endpoints with proper error handling
 
-### Installation
+### Development & Build Tools
 
-1. **Clone the repository**
+- **ESLint 9**: Latest linting with custom rules for React and TypeScript
+- **Turbopack**: Next-generation bundler for faster development builds
+- **PostCSS**: CSS processing with modern features and optimizations
+- **Git**: Version control with conventional commit messages
 
-   ```bash
-   git clone https://github.com/codename-SilverMask/FlightFinder.git
-   cd FlightFinder
-   ```
+### Icons & Visual Assets
 
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 📱 How to Use
-
-### Flight Search
-
-1. **Choose trip type**: One-way or round-trip
-2. **Enter locations**: Type airport codes (JFK, LAX) or city names
-3. **Select dates**: Pick departure and return dates
-4. **Set passengers**: Choose number of travelers (1-9)
-5. **Search & browse**: View detailed flight results with pricing
-
-### Hotel Search
-
-1. **Enter destination**: City name or airport code
-2. **Select dates**: Check-in and check-out dates
-3. **Set guests**: Number of adults (1-8)
-4. **Choose radius**: Search distance from city center
-5. **Search & explore**: Browse hotels with amenities and reviews
-
-### Flight Tracking
-
-1. **Enter flight number**: Airline code + number (e.g., AA123)
-2. **Select date**: Departure date
-3. **Get status**: Real-time flight information and delays
-
-## 🌟 Key Features Explained
-
-### Immersive Animations
-
-- **Matrix Background**: Dynamic character-falling animation
-- **Typewriter Effect**: Realistic typing animation for headers
-- **Glitch Effects**: Cyberpunk-style text distortions
-- **Smooth Transitions**: Hardware-accelerated animations
-
-### Mobile Experience
-
-- **Full-Viewport Menu**: Immersive navigation on mobile
-- **Touch Optimized**: Large touch targets and smooth gestures
-- **Responsive Design**: Perfect on phones, tablets, and desktops
-- **Fast Loading**: Optimized for mobile networks
-
-### Smart Search
-
-- **Autocomplete**: Fast location suggestions as you type
-- **Validation**: Smart form validation with helpful errors
-- **Real-time Results**: Live data from Amadeus Travel API
-- **Detailed Information**: Comprehensive flight and hotel details
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-This app is optimized for Vercel deployment:
-
-1. **Connect GitHub**: Link your repository to Vercel
-2. **Auto Deploy**: Pushes to main branch automatically deploy
-3. **Environment Variables**: Configure API credentials in Vercel dashboard
-
-### Manual Deployment
-
-```bash
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-## 📖 Documentation
-
-- **[Technical Documentation](./TECHNICAL_README.md)** - Detailed architecture and implementation guide
-- **[API Documentation](./TECHNICAL_README.md#api-architecture)** - Complete API integration details
-- **[Component Guide](./TECHNICAL_README.md#component-architecture-deep-dive)** - In-depth component explanations
-
-## 🎯 Performance
-
-- **Bundle Size**: 99.7 kB (optimized)
-- **Build Time**: ~2-3 seconds
-- **Lighthouse Score**: 95+ performance
-- **Mobile Optimized**: Fast loading on all devices
-
-## 🔧 Development
-
-```bash
-# Development server with hot reload
-npm run dev
-
-# Type checking
-npm run type-check
-
-# Linting
-npm run lint
-
-# Bundle analysis
-npm run analyze
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **[Amadeus API](https://developers.amadeus.com/)** - Travel data provider
-- **[Reactbits.dev](https://reactbits.dev/)** - Animation inspiration
-- **[Next.js](https://nextjs.org/)** - React framework
-- **[Tailwind CSS](https://tailwindcss.com/)** - Styling framework
-
-## 📊 Project Status
-
-- ✅ **Development**: Complete
-- ✅ **Testing**: Passed
-- ✅ **Deployment**: Production ready
-- ✅ **Documentation**: Comprehensive
-- ✅ **Mobile**: Fully responsive
-
----
-
-**🌟 Star this repo if you found it helpful!**
-
-For detailed technical information, see [TECHNICAL_README.md](./TECHNICAL_README.md)
+- **Lucide React 0.536.0**: Modern, customizable icon library
+- **Custom SVG Components**: Optimized vector graphics for performance
+- **Responsive Images**: Next.js Image optimization with lazy loading
 
 ## 🎨 Advanced UI/UX Features
 
@@ -880,72 +735,6 @@ npm run analyze
 - Best Practices: 100
 - SEO: 95+
 
-## 📱 Usage Guide & User Experience
-
-### Flight Search Workflow
-
-1. **Landing Page Experience**
-
-   - Immersive LetterGlitch background animation
-   - TypeWriter effect for hero text
-   - Feature cards with hover animations
-   - Mobile-responsive navigation
-
-2. **Search Interface**
-
-   ```typescript
-   // Search form validation
-   - Trip type: One-way or Round-trip
-   - Origin: 3-letter IATA code or city name
-   - Destination: 3-letter IATA code or city name
-   - Departure: Date picker with min date validation
-   - Return: Date picker (round-trip only, after departure)
-   - Passengers: 1-9 adults (integer validation)
-   ```
-
-3. **Results Display**
-   - Sortable flight results (price, duration, departure time)
-   - Detailed itinerary information
-   - Airline branding and flight numbers
-   - Price breakdown with taxes
-   - Seat availability indicators
-
-### Hotel Search Experience
-
-1. **Search Configuration**
-
-   ```typescript
-   // Hotel search parameters
-   - Destination: City name or airport code
-   - Check-in: Date validation with availability
-   - Check-out: Minimum 1 night stay
-   - Adults: 1-8 guests
-   - Radius: 5-200 km from city center
-   - Hotel name: Optional filter
-   ```
-
-2. **Results Presentation**
-   - Hotel cards with rating display
-   - Distance from city center
-   - Amenities with icons
-   - Room types and pricing
-   - Cancellation policies
-
-### Flight Tracking Features
-
-1. **Status Lookup**
-
-   - Flight number validation (e.g., AA123, BA456)
-   - Departure date selection
-   - Real-time status updates
-   - Delay prediction algorithms
-
-2. **Information Display**
-   - Current flight status
-   - Gate and terminal information
-   - Estimated vs. actual times
-   - Historical performance data
-
 ## 🌐 API Integration & Data Flow
 
 ### Amadeus API Implementation
@@ -1447,45 +1236,6 @@ ComponentName.displayName = "ComponentName";
 ⚠️ Older mobile browsers (Limited support)
 ```
 
-## 📄 License & Legal
-
-### MIT License
-
-```
-Copyright (c) 2025 FlightFinder
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-### Third-Party Licenses
-
-- **Next.js**: MIT License
-- **React**: MIT License
-- **Tailwind CSS**: MIT License
-- **Amadeus API**: Commercial license (free tier available)
-- **Lucide Icons**: ISC License
-- **GSAP**: Commercial license for commercial use
-
-### Disclaimer
-
-This application is for educational and demonstration purposes. It uses Amadeus test environment data and should not be used for actual flight or hotel bookings. All prices and availability are simulated and not representative of real-world costs.
-
 ## 📊 Project Statistics & Metrics
 
 ### Codebase Metrics
@@ -1529,11 +1279,10 @@ This application is for educational and demonstration purposes. It uses Amadeus 
 
 ---
 
-**Built with ❤️ by [codename-SilverMask](https://github.com/codename-SilverMask)**
+**Technical Documentation for FlightFinder v1.0.0**
 
-_For questions, suggestions, or support, please open an issue on GitHub or contact the development team._
+_Last Updated: August 10, 2025_  
+_Documentation Version: 1.0.0_  
+_Status: Production Ready ✅_
 
-**Total Development Time**: ~40+ hours  
-**Last Updated**: August 10, 2025  
-**Version**: 1.0.0  
-**Status**: Production Ready ✅
+For implementation questions or technical support, please refer to the main README or open a GitHub issue.
