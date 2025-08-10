@@ -164,16 +164,3 @@ This project is licensed under the MIT License.
 - **Lucide** for beautiful icons
 - **Tailwind CSS** for styling utilities
 
-## 📊 Evaluation Criteria
-
-This project addresses the following evaluation criteria:
-
-- ✅ **Code Quality (15/15)**: Clean, well-structured TypeScript code
-- ✅ **Code Readability & Structure (15/15)**: Modular components, clear naming
-- ✅ **UI/UX Design Accuracy (30/30)**: Modern dark theme, responsive design
-- ✅ **Responsiveness (15/15)**: Mobile-first design, works on all devices
-- ✅ **API Integration (15/15)**: Full Amadeus API integration with error handling
-- ✅ **GitHub Repo Quality (5/5)**: Well-documented, organized structure
-- ✅ **Submission Completeness (5/5)**: All requirements implemented
-
-**Total Score: 100/100**
