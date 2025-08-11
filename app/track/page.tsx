@@ -42,20 +42,21 @@ export default function FlightTrackingPage() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Background Animation */}
-      <div className="fixed inset-0 z-0">
-        <LetterGlitch
-          glitchSpeed={50}
-          centerVignette={true}
-          outerVignette={false}
-          smooth={true}
-        />
-      </div>
+    <div className="relative min-h-screen overflow-x-hidden">
+      {/* Background Animation hidden when menu open */}
+      {!isMobileMenuOpen && (
+        <div className="fixed inset-0 z-0">
+          <LetterGlitch
+            glitchSpeed={50}
+            centerVignette={true}
+            outerVignette={false}
+            smooth={true}
+          />
+        </div>
+      )}
 
-      {/* Content */}
-      <div className="relative z-10 min-h-screen">
-        {/* Header */}
+      {/* Header always present so menu toggle isn't removed */}
+      <div className="relative z-10">
         <header className="bg-black/30 backdrop-blur-sm border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
@@ -72,39 +73,40 @@ export default function FlightTrackingPage() {
                   FlightFinder
                 </GlitchText>
               </Link>
-
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center space-x-6">
-                <Link href="/" className="hover:scale-105 transition-transform">
-                  <GradientText
-                    text="Flights"
-                    className="text-gray-300 hover:text-white transition-colors"
-                    as="span"
-                  />
-                </Link>
-                <Link
-                  href="/hotels"
-                  className="hover:scale-105 transition-transform"
-                >
-                  <GradientText
-                    text="Hotels"
-                    className="text-gray-300 hover:text-white transition-colors"
-                    as="span"
-                  />
-                </Link>
-                <Link
-                  href="/track"
-                  className="hover:scale-105 transition-transform border-b-2 border-blue-500"
-                >
-                  <GradientText
-                    text="Track Flight"
-                    className="text-white"
-                    as="span"
-                  />
-                </Link>
-              </nav>
-
-              {/* Mobile Menu */}
+              {!isMobileMenuOpen && (
+                <nav className="hidden md:flex items-center space-x-6">
+                  <Link
+                    href="/"
+                    className="hover:scale-105 transition-transform"
+                  >
+                    <GradientText
+                      text="Flights"
+                      className="text-gray-300 hover:text-white transition-colors"
+                      as="span"
+                    />
+                  </Link>
+                  <Link
+                    href="/hotels"
+                    className="hover:scale-105 transition-transform"
+                  >
+                    <GradientText
+                      text="Hotels"
+                      className="text-gray-300 hover:text-white transition-colors"
+                      as="span"
+                    />
+                  </Link>
+                  <Link
+                    href="/track"
+                    className="hover:scale-105 transition-transform border-b-2 border-blue-500"
+                  >
+                    <GradientText
+                      text="Track Flight"
+                      className="text-white"
+                      as="span"
+                    />
+                  </Link>
+                </nav>
+              )}
               <MobileMenu
                 isOpen={isMobileMenuOpen}
                 onToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -112,94 +114,79 @@ export default function FlightTrackingPage() {
             </div>
           </div>
         </header>
-
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Hero Section */}
-          {!hasSearched && (
-            <div className="text-center mb-12">
-              <TextType
-                text={[
-                  "Track Your Flight",
-                  "Get real-time updates",
-                  "Stay informed every step",
-                ]}
-                typingSpeed={75}
-                pauseDuration={1500}
-                showCursor={true}
-                cursorCharacter="|"
-                className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6"
-                as="h2"
-              />
-              <div className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto min-h-[4rem] flex items-center justify-center">
-                <p className="text-white font-medium">
-                  Get real-time updates on flight status, delays, gate changes,
-                  and more. Stay informed about your journey every step of the
-                  way.
-                </p>
-              </div>
-
-              {/* Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 mb-12">
-                <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-blue-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-400/10 group cursor-pointer">
-                  <Activity className="w-8 h-8 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
-                    Real-time Status
-                  </h3>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                    Get live updates on departures, arrivals, and delays
-                  </p>
-                </div>
-                <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-yellow-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-yellow-400/10 group cursor-pointer">
-                  <Clock className="w-8 h-8 text-yellow-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-yellow-300 transition-colors">
-                    Gate Information
-                  </h3>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                    Terminal and gate details updated in real-time
-                  </p>
-                </div>
-                <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-green-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-400/10 group cursor-pointer sm:col-span-2 lg:col-span-1">
-                  <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-green-300 transition-colors">
-                    Delay Predictions
-                  </h3>
-                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                    AI-powered predictions to help you plan ahead
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Tracking Form */}
-          <div className="mb-8">
-            <FlightTrackingForm onTrack={handleTrack} isLoading={isLoading} />
-          </div>
-
-          {/* Results */}
-          {hasSearched && (
-            <FlightTrackingResults
-              flights={flights}
-              isLoading={isLoading}
-              error={error}
-            />
-          )}
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-black/30 backdrop-blur-sm border-t border-gray-800 mt-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="text-center">
-              <p className="text-gray-400 text-sm">
-                © 2025 FlightFinder. Flight tracking powered by Amadeus API.
-              </p>
-              <p className="text-gray-500 text-xs mt-2">
-                Made by Amaney Hussain
-              </p>
-            </div>
-          </div>
-        </footer>
       </div>
+
+      {/* Main + footer hidden while menu open */}
+      {!isMobileMenuOpen && (
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+            {!hasSearched && (
+              <div className="text-center mb-12">
+                <TextType
+                  text={[
+                    "Track Your Flight",
+                    "Get real-time updates",
+                    "Stay informed every step",
+                  ]}
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  showCursor={true}
+                  cursorCharacter="|"
+                  className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6"
+                  as="h2"
+                />
+                <div className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto min-h-[4rem] flex items-center justify-center">
+                  <p className="text-white font-medium">
+                    Get real-time updates on flight status, delays, gate
+                    changes, and more. Stay informed about your journey every
+                    step of the way.
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 mb-12">
+                  <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-blue-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-400/10 group cursor-pointer">
+                    <Activity className="w-8 h-8 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                      Real-time Status
+                    </h3>
+                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                      Get live updates on departures, arrivals, and delays
+                    </p>
+                  </div>
+                  <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-yellow-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-yellow-400/10 group cursor-pointer">
+                    <Clock className="w-8 h-8 text-yellow-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-yellow-300 transition-colors">
+                      Gate Information
+                    </h3>
+                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                      Terminal and gate details updated in real-time
+                    </p>
+                  </div>
+                  <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800 hover:bg-gray-800/60 hover:border-green-400/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-400/10 group cursor-pointer sm:col-span-2 lg:col-span-1">
+                    <TrendingUp className="w-8 h-8 text-green-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-green-300 transition-colors">
+                      Delay Predictions
+                    </h3>
+                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                      AI-powered predictions to help you plan ahead
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div className="mb-8">
+              <FlightTrackingForm onTrack={handleTrack} isLoading={isLoading} />
+            </div>
+            {hasSearched && (
+              <FlightTrackingResults
+                flights={flights}
+                isLoading={isLoading}
+                error={error}
+              />
+            )}
+          </main>
+          {/* Global footer in layout */}
+        </div>
+      )}
     </div>
   );
 }
